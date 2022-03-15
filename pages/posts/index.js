@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const PostList = ({ posts }) => {
     return (
@@ -7,9 +8,11 @@ const PostList = ({ posts }) => {
         posts.map(post => {
           return (
             <div key={post.id}>
-              <h2>
-                {post.id} {post.title}
-              </h2>
+              <Link href={`posts/${post.id}`}>
+                <h2>
+                  {post.id} {post.title}
+                </h2>
+              </Link>
             </div>
           );
         })
@@ -29,5 +32,6 @@ export async function getStaticProps () {
       },
     };
 }
+
 //when i view the code source of this page , i found all the data of posts
 //That's mean our page it was succusfully pre-rendred
